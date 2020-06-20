@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+
+namespace Enum_Switch1
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			List<ToDo> todos = new List<ToDo>()
+		{
+			new ToDo {Description = "Team Update", TimeTaken = 15, Status = Status.Started},
+			new ToDo {Description = "Code new app", TimeTaken = 2000, Status = Status.InProgress},
+			new ToDo {Description = "Test code", TimeTaken = 4000,  Status = Status.Completed}
+		};
+			PrintVerify(todos);
+			Console.ReadLine();
+		}
+
+		private static void PrintVerify(List<ToDo> todos)
+
+		{
+			foreach (var todo in todos)
+			{
+				switch (todo.Status)
+				{
+					case Status.Completed:
+						Console.WriteLine("Project Completed");
+						Console.ForegroundColor = ConsoleColor.Blue;
+						break;
+					case Status.Started:
+						Console.WriteLine("Project Started");
+						Console.ForegroundColor = ConsoleColor.Cyan;
+						break;
+					case Status.InProgress:
+						Console.WriteLine("Project InProgress");
+						Console.ForegroundColor = ConsoleColor.Green;
+						break;
+
+					default:
+						break;
+
+				}
+			}
+		}
+		class ToDo
+
+		{
+			public string Description { get; set; }
+			public int TimeTaken { get; set; }
+			public Status Status { get; set; }
+
+		}
+		enum Status
+		{
+			Started,
+			Completed,
+			OnHold,
+			InProgress
+
+		}
+	}
+}
+
